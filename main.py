@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import models, layers
 import matplotlib.pyplot as plt
+import os
 
 IMAGE_SIZE = 256
 BATCH_SIZE = 32
@@ -90,3 +91,7 @@ plt.plot(range(EPOCHS), val_loss, label='Validation Loss')
 plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
 plt.show()
+
+
+model.save("D:\\projects\\Image_Classification_with_deployment\\models\\model.h5")
+
