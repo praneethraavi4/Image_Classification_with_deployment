@@ -69,3 +69,24 @@ model.compile(
 )
 
 history =  model.fit(train_ds,epochs = EPOCHS, batch_size = BATCH_SIZE, verbose = 1, validation_data = val_ds)
+scores = model.evaluate(test_ds)
+
+acc = history.history["accuracy"]
+val_acc = history.history["val_accuracy"]
+
+loss = history.history["loss"]
+val_loss = history.history["val_loss"]
+
+plt.figure(figsize=(8, 8))
+plt.subplot(1, 2, 1)
+plt.plot(range(EPOCHS), acc, label='Training Accuracy')
+plt.plot(range(EPOCHS), val_acc, label='Validation Accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and Validation Accuracy')
+
+plt.subplot(1, 2, 2)
+plt.plot(range(EPOCHS), loss, label='Training Loss')
+plt.plot(range(EPOCHS), val_loss, label='Validation Loss')
+plt.legend(loc='upper right')
+plt.title('Training and Validation Loss')
+plt.show()
