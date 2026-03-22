@@ -95,3 +95,5 @@ plt.show()
 
 model.save("D:\\projects\\Image_Classification_with_deployment\\models\\model.h5")
 
+print("trigger azure pipeline")
+
