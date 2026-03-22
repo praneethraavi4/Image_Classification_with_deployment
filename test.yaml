@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  fetchDepth: 0
+
+- script: |
+    echo "Commit,Author,Date,Message" > commits.csv
+    git log --pretty=format:"%H,%an,%ad,%s" --date=iso >> commits.csv
+  displayName: Generate commit CSV
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'commits.csv'
+    artifactName: 'commit-report'
